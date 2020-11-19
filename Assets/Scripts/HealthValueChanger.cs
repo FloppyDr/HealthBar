@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class HealthValueChanger : MonoBehaviour
 {
-   [SerializeField] private Slider _healthBar;
-
-    public void ChangeHp(float hp)
+    [SerializeField] private Slider _healthBar;
+    [SerializeField] Player _player;
+    public void ChangeHp()
     {
-        _healthBar.DOValue(_healthBar.value + hp, 0.5f, true);
+        _healthBar.DOValue(_player.Health, 0.5f, true);
     }
 }
