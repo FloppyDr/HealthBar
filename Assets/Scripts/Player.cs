@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     private UnityEvent _healthChanged = new UnityEvent();
-
     private float _curretHealth;
     private float _maxHealth = 100f;
     private float _minHealth = 0f;
