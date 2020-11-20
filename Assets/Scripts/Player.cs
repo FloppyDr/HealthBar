@@ -5,13 +5,19 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _healthChanged;
+    private UnityEvent _healthChanged = new UnityEvent();
 
     private float _curretHealth;
     private float _maxHealth = 100f;
     private float _minHealth = 0f;
 
     public float Health => _curretHealth;
+
+    public event UnityAction HealthChanged
+    {
+        add => _healthChanged.AddListener(value);
+        remove => _healthChanged.AddListener(value);
+    }
 
     private void Start()
     {
@@ -29,7 +35,7 @@ public class Player : MonoBehaviour
             _curretHealth -= damage;
         }
 
-        _healthChanged?.Invoke();
+        _healthChanged.Invoke();
     }
 
     public void GetHeal(float heal)
@@ -41,6 +47,6 @@ public class Player : MonoBehaviour
             _curretHealth = _maxHealth;
         }
 
-        _healthChanged?.Invoke();
+        _healthChanged.Invoke();
     }
 }
